@@ -10,15 +10,15 @@ do
 case $n in
 4)
 echo "$n"
-echo "Bad luck from China"
+echo "bad luck from China"
 ;;
 9)
 echo "$n"
-echo "Bad luck from Japan"
+echo "bad luck from Japan"
 ;;
 17)
 echo "$n"
-echo "Bad luck from Italy"
+echo "bad luck from Italy"
 ;;
 *)
 echo "$n"
