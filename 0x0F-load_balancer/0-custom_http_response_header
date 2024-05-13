@@ -1,0 +1,19 @@
+http {
+    include mime.types;
+    upstream X-Served-By {
+        server 52.91.118.245;
+        server 100.26.50.62;
+    }
+
+    server {
+        listen 8080;
+
+        location / {
+            proxy_pass http://X-Served-By;
+            add_header X-Served-By $hostname;
+        }
+    }
+}
+
+events {}
+
