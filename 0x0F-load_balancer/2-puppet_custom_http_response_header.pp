@@ -1,3 +1,5 @@
+# Creating a custom HTTP header response with Puppet.
+
 package { 'nginx':
   ensure => installed,
 }
