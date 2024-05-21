@@ -20,7 +20,7 @@ defaults
 
 frontend www-http
     bind   0.0.0.0:80
-    default_backend www-backend
+    redirect scheme https code 301 if !{ ssl_fc }
 
 frontend www-https
     bind   0.0.0.0:443 ssl crt /home/ubuntu/haproxy.pem
