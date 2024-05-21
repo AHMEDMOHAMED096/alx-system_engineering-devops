@@ -24,15 +24,9 @@ frontend www-http
 
 frontend www-https
     bind   0.0.0.0:443 ssl crt /home/ubuntu/haproxy.pem
-    acl    letsencrypt-acl path_beg /.well-known/acme-challenge/
-    use_backend letsencrypt-backend if letsencrypt-acl
     default_backend www-backend
 
 backend www-backend
     balance roundrobin
-    redirect scheme https code 301 if !{ ssl_fc }
     server 03-web-01 100.25.129.38:80 check
     server 03-web-02 100.26.50.62:80 check
-
-backend letsencrypt-backend
-    server letsencrypt 127.0.0.1:80
