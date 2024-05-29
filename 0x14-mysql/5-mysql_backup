@@ -8,8 +8,6 @@ DATE=$(date +%d-%m-%Y)
 DUMP_FILE="backup.sql"
 ARCHIVE_FILE="$DATE.tar.gz"
 
-mysqldump -u root -p"$MYSQL_ROOT_PASSWORD" tyrell_corp > "$DUMP_FILE"
+mysqldump -u root -p"$MYSQL_ROOT_PASSWORD" --all-databases > "$DUMP_FILE"
 
 tar -czvf "$ARCHIVE_FILE" "$DUMP_FILE"
-
-rm "$DUMP_FILE"
