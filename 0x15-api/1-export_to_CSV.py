@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """Script that using REST API, for a given employee ID
 returns information about his/her todo list progress."""
+import csv
 import requests
 import sys
-import csv
 
 
 def get_todo_list_progress(emp_id):
