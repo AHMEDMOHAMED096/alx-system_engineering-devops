@@ -2,8 +2,8 @@
 """Script that using REST API, for a given employee ID
 returns information about his/her todo list progress."""
 import requests
-import sys
 import json
+import sys
 
 
 def get_todo_list_progress(emp_id):
