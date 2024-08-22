@@ -1,14 +1,14 @@
 # Handle the high load
 
-exec { 'modify_ulimit':
-  command => "sed -i 's/^ULIMIT=\"-n [0-9]\+\"/ULIMIT=\"-n 4096\"/' /etc/default/nginx",
-  path    => ['/bin', '/usr/bin'],
-  unless  => "grep -q '^ULIMIT=\"-n 4096\"' /etc/default/nginx",
+exec { 'modify_nginx_ulimit':
+  command => 'sed -i "s/15/4096/" /etc/default/nginx',
+  path    => ['/usr/local/bin', '/bin'],
   notify  => Exec['restart_nginx'],
 }
 
+# Restart Nginx
 exec { 'restart_nginx':
-  command     => 'service nginx restart',
-  path        => ['/bin', '/usr/bin'],
+  command     => './nginx restart',
+  path        => ['/etc/init.d'],
   refreshonly => true,
 }
