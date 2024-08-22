@@ -1,11 +1,4 @@
 #!/usr/bin/env bash
 # Gracefully reloads Gunicorn
 
-GUNICORN_PIDS=$(pgrep -f gunicorn)
-
-if [ -n "$GUNICORN_PIDS" ]; then
-  echo "$GUNICORN_PIDS" | xargs -r kill -HUP
-  echo "Gunicorn processes have been gracefully reloaded."
-else
-  echo "No Gunicorn processes found."
-fi
+ps aux | grep gunicorn | awk '{ print $2 }' | xargs kill -HUP
