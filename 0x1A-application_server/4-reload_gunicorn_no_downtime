@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Gracefully reloads Gunicorn
+
+GUNICORN_PID=$(pgrep -f 'gunicorn')
+
+if [ -z "$GUNICORN_PID" ]; then
+  echo "Gunicorn is not running."
+  exit 1
+fi
+
+kill -HUP $GUNICORN_PID
+
+if [ $? -eq 0 ]; then
+  echo "Gunicorn has been gracefully reloaded."
+else
+  echo "Failed to reload Gunicorn."
+  exit 1
+fi
